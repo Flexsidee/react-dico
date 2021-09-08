@@ -8,13 +8,13 @@ import {
 import categories from "../../data/category";
 import "./Header.css";
 
-const Header = ({ category, setCategory, word, setWord }) => {
+const Header = ({ category, setCategory, word, setWord, themeMode }) => {
   const darkTheme = createTheme({
     palette: {
       primary: {
-        main: "#fff",
+        main: themeMode ? "#000" : "#fff",
       },
-      type: "dark",
+      type: themeMode ? "light" : "dark",
     },
   });
 

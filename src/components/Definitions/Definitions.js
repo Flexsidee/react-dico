@@ -1,7 +1,7 @@
 import React from "react";
 import "./Definitions.css";
 
-const Definitions = ({ word, meanings, category }) => {
+const Definitions = ({ word, meanings, category, themeMode }) => {
   return (
     <div className="meanings">
       <p>
@@ -20,10 +20,9 @@ const Definitions = ({ word, meanings, category }) => {
 
       {meanings[0] && word && category === "en" && (
         <audio
-          src={meanings[0].phonetics[0].audio}
+          src={meanings[0].phonetics[0] && meanings[0].phonetics[0].audio}
           style={{
             borderRadius: 10,
-            backgroundColor: "#fff",
             width: "100%",
           }}
           controls
@@ -37,7 +36,13 @@ const Definitions = ({ word, meanings, category }) => {
       ) : (
         meanings.map((mean) =>
           mean.meanings.map((item) => (
-            <div className="speechMean">
+            <div
+              className="speechMean"
+              style={{
+                backgroundColor: themeMode ? " #282c34 " : "white",
+                color: themeMode ? "white" : "black",
+              }}
+            >
               <p
                 style={{
                   textAlign: "center",
@@ -48,7 +53,14 @@ const Definitions = ({ word, meanings, category }) => {
                 <b>{item.partOfSpeech}</b>
               </p>
               {item.definitions.map((def) => (
-                <div className="singleMean">
+                <div
+                  className="singleMean"
+                  style={{
+                    borderTop: themeMode
+                      ? "2px white solid"
+                      : "2px #282c34 solid",
+                  }}
+                >
                   <span>
                     <b>Meaning : </b> {def.definition}
                   </span>

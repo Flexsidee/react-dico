@@ -19,8 +19,6 @@
 .speechMean{
     display: flex;
     flex-direction: column;
-    background-color: white;
-    color: black;
     padding: 10px 20px;
     margin: 5px 0;
     border-radius: 5px;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Header from "./components/header/Header";
 import Definitions from "./components/Definitions/Definitions";
-import { Container } from "@material-ui/core";
+import { Container, Switch, withStyles } from "@material-ui/core";
+import { grey } from "@material-ui/core/colors";
 import axios from "axios";
 import "./App.css";
 
@@ -9,6 +10,21 @@ function App() {
   const [word, setWord] = useState("");
   const [meanings, setMeanings] = useState([]);
   const [category, setCategory] = useState();
+  const [themeMode, setThemeMode] = useState(false);
+
+  const ToggleMode = withStyles({
+    switchBase: {
+      color: grey[300],
+      "&$checked": {
+        color: grey[500],
+      },
+      "&$checked + $track": {
+        backgroundColor: grey[500],
+      },
+    },
+    checked: {},
+    track: {},
+  })(Switch);
 
   const dictionaryApi = async () => {
     try {
@@ -30,22 +46,47 @@ function App() {
   return (
     <div
       className="App"
-      style={{ background: "#282c34", height: "100vh", color: "white" }}
+      style={{
+        background: themeMode ? "white" : "#282c34",
+        height: "100vh",
+        color: themeMode ? "#282c34" : "white",
+        transition: "all 0.5s linear",
+      }}
     >
       <Container
         maxWidth="md"
-        style={{ height: "100vh", display: "flex", flexDirection: "column" }}
+        style={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-evenly",
+        }}
       >
+        <div
+          style={{ position: "absolute", top: 0, right: 15, paddingTop: 10 }}
+        >
+          <span>{themeMode ? "Light" : "Dark"} Mode</span>
+          <ToggleMode
+            checked={themeMode}
+            onChange={() => setThemeMode(!themeMode)}
+          />
+        </div>
         <Header
           category={category}
           setCategory={setCategory}
           word={word}
           setWord={setWord}
+          themeMode={themeMode}
         />
         {meanings.length <= 0 ? (
           ""
         ) : (
-          <Definitions word={word} meanings={meanings} category={category} />
+          <Definitions
+            word={word}
+            meanings={meanings}
+            category={category}
+            themeMode={themeMode}
+          />
         )}
       </Container>
     </div>
