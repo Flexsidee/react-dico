@@ -42,7 +42,9 @@ function App() {
           word={word}
           setWord={setWord}
         />
-        {meanings && (
+        {meanings.length <= 0 ? (
+          ""
+        ) : (
           <Definitions word={word} meanings={meanings} category={category} />
         )}
       </Container>
