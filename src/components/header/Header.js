@@ -29,16 +29,9 @@ const Header = ({ category, setCategory, word, setWord }) => {
       <div className="inputs">
         <ThemeProvider theme={darkTheme}>
           <TextField
-            id="standard-basic"
-            className="search"
-            label="Search word "
-            value={word}
-            onChange={(e) => setWord(e.target.value)}
-          />
-          <TextField
             className="search"
             select
-            label="Language"
+            label="Select Language"
             value={category}
             onChange={(e) => handleLanguageChange(e.target.value)}
           >
@@ -48,6 +41,13 @@ const Header = ({ category, setCategory, word, setWord }) => {
               </MenuItem>
             ))}
           </TextField>
+          <TextField
+            id="standard-basic"
+            className="search"
+            label="Search word "
+            value={word}
+            onChange={(e) => setWord(e.target.value)}
+          />
         </ThemeProvider>
       </div>
     </div>
