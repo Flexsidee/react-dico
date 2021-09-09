@@ -8,6 +8,12 @@
   "start_url": "/",
   "icons": [
     {
+      "src": "maskable_icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
       "src": "icons/192w.png",
       "type": "image/png",
       "sizes": "192x192"
