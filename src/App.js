@@ -66,7 +66,7 @@ function App() {
         <div
           style={{ position: "absolute", top: 0, right: 15, paddingTop: 10 }}
         >
-          <span>{themeMode ? "Light" : "Dark"} Mode</span>
+          <span>{themeMode ? "Dark" : "Light"} Mode</span>
           <ToggleMode
             checked={themeMode}
             onChange={() => setThemeMode(!themeMode)}
