@@ -2,7 +2,6 @@
   "name": "Dictionary App",
   "short_name": "Dictionary",
   "theme_color": "#000000",
-  "splah-screen": "#fff",
   "background_color": "#000000",
   "display": "standalone",
   "scope": "/",
